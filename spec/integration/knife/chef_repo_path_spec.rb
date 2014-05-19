@@ -101,7 +101,7 @@ EOM
 /users/
 /users/user3.json
 EOM
-        end        
+        end
 
         context 'when cwd is at the top level' do
           cwd '.'
@@ -806,6 +806,7 @@ EOM
             Chef::Config.delete("#{object_name}_path".to_sym)
           end
           Chef::Config.delete(:chef_repo_path)
+          Chef::Config[:cache_path] = windows? ? 'C:\chef' : '/var/chef'
           Chef::Config.data_bag_path = File.join(@repository_dir, 'data_bags')
         end
 
